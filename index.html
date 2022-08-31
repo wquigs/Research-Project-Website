@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctors</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="proID">
+      <p class="proID-text">ID: <span id="id-results"></span></p>
+      <h1 class="helper">Find a doctor in your area:</h1>
+      <h2 class="helper">Confirm your selection at the bottom</h2>
+      
+    </div>
+    <form
+      action="https://sheetdb.io/api/v1/jqjp9cuv0061a"
+      method="POST"
+      id="sheetdb-form"
+    >
+      <input type="hidden" name="data[prolific id]" id="h-id-results" />
+      <input type="hidden" name="data[doctor order]" id="doc-order" />
+      <input type="hidden" name="data[rating]" id="ratings" />
+      <input type="hidden" name="data[distance]" id="distances" />
+      <div class="docSquare">
+        <img class="pic" />
+        <h2 class="name" id="d1"></h2>
+        <h3 class="specialty">Cardiologist</h3>
+        <p class="rating" id="d1r"></p>
+        <p class="distance" id="d1d"></p>
+        <input type="radio" name="data[selection]" id="d1b" value="1st" />
+        <label for="d1b" class="rlabel">Make Appointment</label>
+      </div>
+      <div class="docSquare">
+        <img class="pic" />
+        <h2 class="name" id="d2"></h2>
+        <h3 class="specialty">Cardiologist</h3>
+        <p class="rating" id="d2r"></p>
+        <p class="distance" id="d2d"></p>
+        <input type="radio" name="data[selection]" id="d2b" value="2nd" />
+        <label for="d2b">Make Appointment</label>
+      </div>
+      <div class="docSquare">
+        <img class="pic" />
+        <h2 class="name" id="d3"></h2>
+        <h3 class="specialty">Cardiologist</h3>
+        <p class="rating" id="d3r"></p>
+        <p class="distance" id="d3d"></p>
+        <input type="radio" name="data[selection]" id="d3b" value="3rd" />
+        <label for="d3b">Make Appointment</label>
+      </div>
+      <div class="docSquare">
+        <img class="pic" />
+        <h2 class="name" id="d4"></h2>
+        <h3 class="specialty">Cardiologist</h3>
+        <p class="rating" id="d4r"></p>
+        <p class="distance" id="d4d"></p>
+        <input type="radio" name="data[selection]" id="d4b" value="4th" />
+        <label for="d4b">Make Appointment</label>
+      </div>
+      <div class="docSquare">
+        <img class="pic" />
+        <h2 class="name" id="d5"></h2>
+        <h3 class="specialty">Cardiologist</h3>
+        <p class="rating" id="d5r"></p>
+        <p class="distance" id="d5d"></p>
+        <input type="radio" name="data[selection]" id="d5b" value="5th" />
+        <label for="d5b">Make Appointment</label>
+      </div>
+      <div class="docSquare">
+        <img class="pic" />
+        <h2 class="name" id="d6"></h2>
+        <h3 class="specialty">Cardiologist</h3>
+        <p class="rating" id="d6r"></p>
+        <p class="distance" id="d6d"></p>
+        <input type="radio" name="data[selection]" id="d6b" value="6th" />
+        <label for="d6b">Make Appointment</label>
+      </div>
+       <!--
+      <div class="docSquare">
+        <img class="pic" />
+        <h2 class="name" id="d7"></h2>
+        <h3 class="specialty">Cardiologist</h3>
+        <p class="rating" id="d7r"></p>
+        <p class="distance" id="d7d"></p>
+        <input type="radio" name="data[selection]" id="d7b" value="7th" />
+        <label for="d7b">Make Appointment</label>
+      </div>
+      <div class="docSquare">
+        <img class="pic" />
+        <h2 class="name" id="d8"></h2>
+        <h3 class="specialty">Cardiologist</h3>
+        <p class="rating" id="d8r"></p>
+        <p class="distance" id="d8d"></p>
+        <input type="radio" name="data[selection]" id="d8b" value="8th" />
+        <label for="d8b">Make Appointment</label>
+        -->
+      </div>
+
+      <div class="submit-button">
+        <button type="submit" class="sbutton">Confirm</button>
+      </div>
+    </form>
+  </body>
+  <script>
+    var form = document.getElementById("sheetdb-form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(document.getElementById("sheetdb-form")),
+      })
+        .then((response) => response.json())
+        .then((html) => {
+          // you can put any JS code here
+          alert("All done, now go back to the survey");
+        });
+    });
+    //docs to be assigned
+    var dOneName = "";
+    var dTwoName = "";
+    var dThreeName = "";
+    var dFourName = "";
+    var dFiveName = "";
+    var dSixName = "";
+    /*
+    var dSevenName = "";
+    var dEightName = "";
+    */
+
+    //doc names
+    const docNames = [
+      "Dr. Nguyen",
+      "Dr. Lee",
+      "Dr. Robinson",
+      "Dr. Jackson",
+      "Dr. Miller",
+      "Dr. Martin",
+    ];
+
+    //doc pics
+    const docPics = [
+      "images/AM8.png",
+      "images/AW10.png",
+      "images/BM8.png",
+      "images/BW11.png",
+      "images/WM10.png",
+      "images/WW1.png",
+    ];
+
+    //random number non repeating generating
+    //changed 8 to 6
+    var nums = [];
+    for (let i = 0; i < 6; i++) {
+      var num = Math.floor(Math.random() * 6);
+      while (nums.includes(num)) {
+        num = Math.floor(Math.random() * 6);
+      }
+      nums.push(num);
+    }
+
+    //changed 8 to 6
+    var doctorOrder = [];
+    for (let i = 0; i < 6; i++) {
+      doctorOrder.push(docNames[nums[i]]);
+    }
+    document.getElementById("doc-order").value = doctorOrder.join();
+
+    //assigning name values
+    dOneName = docNames[nums[0]];
+    dTwoName = docNames[nums[1]];
+    dThreeName = docNames[nums[2]];
+    dFourName = docNames[nums[3]];
+    dFiveName = docNames[nums[4]];
+    dSixName = docNames[nums[5]];
+    /*
+    dSevenName = docNames[nums[6]];
+    dEightName = docNames[nums[7]];
+    */
+
+    document.getElementById("d1").innerHTML = dOneName;
+    document.getElementById("d2").innerHTML = dTwoName;
+    document.getElementById("d3").innerHTML = dThreeName;
+    document.getElementById("d4").innerHTML = dFourName;
+    document.getElementById("d5").innerHTML = dFiveName;
+    document.getElementById("d6").innerHTML = dSixName;
+    /*
+    document.getElementById("d7").innerHTML = dSevenName;
+    document.getElementById("d8").innerHTML = dEightName;
+    */
+
+    //assigning pics
+    const img = document.querySelectorAll("img");
+    img[0].src = docPics[nums[0]];
+    img[1].src = docPics[nums[1]];
+    img[2].src = docPics[nums[2]];
+    img[3].src = docPics[nums[3]];
+    img[4].src = docPics[nums[4]];
+    img[5].src = docPics[nums[5]];
+    /*
+    img[6].src = docPics[nums[6]];
+    img[7].src = docPics[nums[7]];
+    */
+
+    //docs
+    document.getElementById("d1b").value = docNames[nums[0]] + " 1st position";
+    document.getElementById("d2b").value = docNames[nums[1]] + " 2nd position";
+    document.getElementById("d3b").value = docNames[nums[2]] + " 3rd position";
+    document.getElementById("d4b").value = docNames[nums[3]] + " 4th position";
+    document.getElementById("d5b").value = docNames[nums[4]] + " 5th position";
+    document.getElementById("d6b").value = docNames[nums[5]] + " 6th position";
+    /*
+    document.getElementById("d7b").value = docNames[nums[6]] + " 7th position";
+    document.getElementById("d8b").value = docNames[nums[7]] + " 8th position";
+    */
+
+    //doc ratings
+    //changed 8 to 6
+    const docRats = ["4.5", "4.6", "4.7", "4.8", "4.9"];
+    var docRatings = [];
+    for (let i = 0; i < 6; i++) {
+      var r = docRats[Math.floor(Math.random() * 5)];
+      docRatings.push(r);
+    }
+    document.getElementById("ratings").value = docRatings.join();
+
+    document.getElementById("d1r").innerHTML =
+      docRatings[0] + "/5 (512 ratings)";
+    document.getElementById("d2r").innerHTML =
+      docRatings[1] + "/5 (517 ratings)";
+    document.getElementById("d3r").innerHTML =
+      docRatings[2] + "/5 (527 ratings)";
+    document.getElementById("d4r").innerHTML =
+      docRatings[3] + "/5 (520 ratings)";
+    document.getElementById("d5r").innerHTML =
+      docRatings[4] + "/5 (505 ratings)";
+    document.getElementById("d6r").innerHTML =
+      docRatings[5] + "/5 (507 ratings)";
+    /*
+    document.getElementById("d7r").innerHTML =
+      docRatings[6] + "/5 (517) ratings";
+    document.getElementById("d8r").innerHTML =
+      docRatings[7] + "/5 (533) ratings";
+      */
+
+    //doc distances
+    const docDist = [
+      "10 miles",
+      "11 miles",
+      "12 miles",
+      "13 miles",
+      "14 miles",
+    ];
+
+    //changed 8 to 6
+    var docDistance = [];
+    for (let i = 0; i < 6; i++) {
+      var d = docDist[Math.floor(Math.random() * 5)];
+      docDistance.push(d);
+    }
+    document.getElementById("distances").value = docDistance.join();
+
+    document.getElementById("d1d").innerHTML = docDistance[0];
+    document.getElementById("d2d").innerHTML = docDistance[1];
+    document.getElementById("d3d").innerHTML = docDistance[2];
+    document.getElementById("d4d").innerHTML = docDistance[3];
+    document.getElementById("d5d").innerHTML = docDistance[4];
+    document.getElementById("d6d").innerHTML = docDistance[5];
+    /*
+    document.getElementById("d7d").innerHTML = docDistance[6];
+    document.getElementById("d8d").innerHTML = docDistance[7];
+    */
+
+    //prolific ID
+    const params = new URL(document.location).searchParams;
+    const pid = params.get("Proliofic ID");
+
+    document.getElementById("id-results").innerHTML = pid;
+    document.getElementById("h-id-results").value = pid;
+  </script>
+</html>
