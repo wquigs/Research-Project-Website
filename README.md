@@ -11,7 +11,7 @@ These doctors have random ratings in the same range and a random distance from "
 The order of these doctors is randomized for each user so the dactor at the top has no advantage.
 The images were picked out of hundreds and were surveyed to be most alike in catagories such as age, attractiveness, and percieved intelligence.
 
-<img width="721" alt="Screen Shot 2022-09-01 at 12 36 13 PM" src="https://user-images.githubusercontent.com/112192138/187966803-8720a277-9178-4d8b-83b0-abe7accd3085.png">
+<img width="1421" alt="Screen Shot 2022-09-01 at 12 36 13 PM" src="https://user-images.githubusercontent.com/112192138/187966803-8720a277-9178-4d8b-83b0-abe7accd3085.png">
 
 After submitting their answer the participant is instructed to go back to the survey and their answer is recorded in a database along with the positions of the doctors.
 
